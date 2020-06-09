@@ -31,31 +31,9 @@ export function DistractionButton({navigation, navigationScreen, color, style}) 
                 />
             </Svg>
         </View>
-
-        /*
-        <View style={styles.container}>
-            <Svg
-                viewbox= '0 0 70} 234}'
-                onPress={() =>
-                    navigation.navigate(navigationScreen)
-                }
-                width={buttonWidth}
-                height={buttonHeight}
-                style={styles.svg}
-            >
-                <Path
-                    strokeWidth="0"
-                    fill={color}
-                    type="path"
-                    d="M0 117L75 0.0865784L75 233.913L0 117Z"
-                />
-            </Svg>
-        </View>
-        */
     );
 }
 
 const styles = StyleSheet.create({
     svg: {},
-
 });

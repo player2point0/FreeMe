@@ -12,6 +12,8 @@ import useCachedResources from './hooks/useCachedResources';
 
 const Stack = createStackNavigator();
 
+//todo add horizontal animations for transitions
+
 export default function App(props) {
   const isLoadingComplete = useCachedResources();
 
@@ -23,9 +25,11 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer>
           <Stack.Navigator
+              initialRouteName="DistractionsScreen"
               screenOptions={{
-                headerShown: true
+                headerShown: true,
               }}
+
           >
             <Stack.Screen
                 name="DistractionsScreen"

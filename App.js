@@ -3,9 +3,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 
+import DistractionsScreen from './screens/DistractionsScreen.js';
+import ProgressScreen from './screens/ProgressScreen.js';
+import FeelingsScreen from './screens/FeelingsScreen.js';
+import PostWorkScreen from './screens/PostWorkScreen.js';
+
 import useCachedResources from './hooks/useCachedResources';
-import BottomTabNavigator from './navigation/BottomTabNavigator';
-import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
 
@@ -18,9 +21,28 @@ export default function App(props) {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+        <NavigationContainer>
+          <Stack.Navigator
+              screenOptions={{
+                headerShown: true
+              }}
+          >
+            <Stack.Screen
+                name="DistractionsScreen"
+                component={DistractionsScreen}
+            />
+            <Stack.Screen
+                name="ProgressScreen"
+                component={ProgressScreen}
+            />
+            <Stack.Screen
+                name="FeelingsScreen"
+                component={FeelingsScreen}
+            />
+            <Stack.Screen
+                name="PostWorkScreen"
+                component={PostWorkScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

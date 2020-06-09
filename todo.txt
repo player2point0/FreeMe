@@ -1,0 +1,19 @@
+-make distraction screen
+-make feeling screen
+-make progress scree
+-research react native do not disturb
+-add tests https://jestjs.io/docs/en/snapshot-testing
+
+--lava lamp pomodoro timer--
+-threejs or processing for react native
+https://github.com/cawfree/react-native-blobular
+https://www.themaninblue.com/experiment/Blobular/
+https://github.com/expo/pomodoroexp
+
+
+--inspo--
+https://github.com/osamaq/spotify-lite
+https://github.com/mariodev12/react-native-netflix
+https://www.reddit.com/r/reactnative/comments/bpsmm6/from_nontechnical_to_the_app_store_in_a_year_made/
+https://iamintrovert.co/
+https://www.quirk.fyi/app

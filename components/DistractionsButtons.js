@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import Svg, {Path} from "react-native-svg";
 import {height} from "../constants/Layout";

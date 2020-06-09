@@ -16,6 +16,12 @@ export default function DistractionScreen({navigation}) {
                 color={colors.red}
                 style={styles.progressButton}
             />
+            <DistractionButton
+                navigation={navigation}
+                navigationScreen={"FeelingsScreen"}
+                color={colors.blue}
+                style={styles.feelingsButton}
+            />
 
             <Button
                 title="Post Work"
@@ -36,17 +42,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     feelingsButton: {
-
+        position: 'absolute',
+        left: 0,
+        bottom: 100,
+        transform: [{ rotate: '180deg'}],
     },
     progressButton: {
-
         position: 'absolute',
         right: 0,
-        bottom: 0,
+        bottom: 100,
     },
     postWorkButton: {
         backgroundColor:colors.blue,
     },
-
-
 });

@@ -7,6 +7,7 @@ import DistractionsScreen from './screens/DistractionsScreen.js';
 import ProgressScreen from './screens/ProgressScreen.js';
 import FeelingsScreen from './screens/FeelingsScreen.js';
 import PostWorkScreen from './screens/PostWorkScreen.js';
+import RecommendationScreen from './screens/RecommendationScreen.js';
 
 import useCachedResources from './hooks/useCachedResources';
 
@@ -46,6 +47,10 @@ export default function App(props) {
             <Stack.Screen
                 name="PostWorkScreen"
                 component={PostWorkScreen}
+            />
+            <Stack.Screen
+                name="RecommendationScreen"
+                component={RecommendationScreen}
             />
           </Stack.Navigator>
         </NavigationContainer>

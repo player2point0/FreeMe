@@ -1,8 +1,8 @@
--make distraction screen
 -make feeling screen
--make progress scree
+-make progress screen
 -research react native do not disturb
 -add tests https://jestjs.io/docs/en/snapshot-testing
+-create a custom button
 
 --lava lamp pomodoro timer--
 -threejs or processing for react native

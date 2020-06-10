@@ -17,7 +17,6 @@ export default function FeelingsScreen({navigation}) {
 
     return (
         <View style={styles.container}>
-            <Text>Feelings</Text>
             <FeelingSlider
                 wordsArr={['hell no', 'nah', 'kinda', 'yep', 'fucking wrecked']}
                 sliderName={'Tired...'}

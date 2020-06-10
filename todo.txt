@@ -3,6 +3,7 @@
 -research react native do not disturb
 -add tests https://jestjs.io/docs/en/snapshot-testing
 -create a custom button
+-remove app header and add custom back buttons
 
 --lava lamp pomodoro timer--
 -threejs or processing for react native

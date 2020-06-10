@@ -9,7 +9,6 @@ export default function DistractionScreen({navigation}) {
         <View
             style={styles.container}
         >
-            <Text>Distractions</Text>
             <DistractionButton
                 navigation={navigation}
                 navigationScreen={"ProgressScreen"}

@@ -7,6 +7,14 @@
 -meta balls performance https://www.gamedev.net/tutorials/_/technical/graphics-programming-and-theory/exploring-metaballs-and-isosurfaces-in-2d-r2556/
 - https://en.wikipedia.org/wiki/Metaballs
 
+-making curves
+https://www.blobmaker.app/
+https://codepen.io/osublake/pen/vdzjyg
+https://github.com/ariutta/catmullrom2bezier/blob/master/catmullrom2bezier.js
+https://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline
+https://ionic-v4-angular-tabs-1x83k4.stackblitz.io/
+
+
 -fluid dynamics https://peeke.nl/simulating-blobs-of-fluid
 
 -svg animation libary https://github.com/wcandillon/react-native-redash
@@ -22,3 +30,6 @@ https://github.com/mariodev12/react-native-netflix
 https://www.reddit.com/r/reactnative/comments/bpsmm6/from_nontechnical_to_the_app_store_in_a_year_made/
 https://iamintrovert.co/
 https://www.quirk.fyi/app
+
+--on hooks--
+https://overreacted.io/how-are-function-components-different-from-classes/

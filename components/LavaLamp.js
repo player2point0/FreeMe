@@ -1,82 +1,90 @@
-import React, {useState} from 'react';
-import {ProcessingView} from 'expo-processing';
+import React, {useState, useEffect} from 'react';
+import Svg, {Path} from "react-native-svg";
+import {width, height} from "../constants/Layout";
+import {StyleSheet, Text, View, Button} from 'react-native';
+
+function CirclePath({x, y, radius}) {
+
+    return (
+        <Path
+            strokeWidth="1"
+            stroke={'black'}
+            fill={'blue'}
+            d={`
+                 M ${x}, ${y}
+                 m -${radius}, 0
+                 a ${radius},${radius} 0 1,0 ${radius * 2},0
+                 a ${radius},${radius} 0 1,0 -${radius * 2},0
+                 `}
+        />
+    );
+}
+
+class Blob {
+
+    constructor(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.forceXRange = 2;
+        this.forceY = 3;
+    }
+
+    update(){
+        const GRAVITY = 1;
+
+        this.y += this.forceY;
+        //todo add perlin noise to the x movement
+        this.x += (Math.random() * this.forceXRange) - this.forceXRange/2;
+
+        if(this.y + 2*this.radius > height || this.y - this.radius < 0) this.forceY *= -1;
+
+    }
+}
+
 
 export default function LavaLamp() {
 
-    const sketch = (p) => {
+    const [blobs, setBlobs] = useState([new Blob(200, 100, 100)]);
 
-        class Blob {
+    useEffect(() => {
+        let timer = setInterval(() => {
 
-            Constructor(x, y) {
-                this.pos = new PVector(x, y);
-                this.vel = PVector.random2D();
-                this.vel.mult(3);//Math.random(2, 5));
-                this.r = 200;//Math.random(120, 400);
-            }
-
-            update() {
-                this.pos.add(this.vel);
-                if (this.pos.x > p.width || this.pos.x < 0) {
-                    this.vel.x *= -1;
-                }
-                if (this.pos.y > p.height || this.pos.y < 0) {
-                    this.vel.y *= -1;
-                }
-            }
-
-            show() {
-                p.noFill();
-                p.stroke(0);
-                p.strokeWeight(4);
-                p.ellipse(this.pos.x, this.pos.y, this.r*2, this.r*2);
-            }
-        }
-
-        let blobs = [];
-        const numBlobs = 2;
-
-        p.setup = () => {
-            p.size(640, 360, p.P2D);
-            p.colorMode(p.HSB);
-            for (let i = 0; i < numBlobs; i++) {
-                let tempBlob = new Blob(Math.random()*p.width, Math.random()*p.height);
-                blobs.push(tempBlob)
-            }
-
-            console.log(p.drawing);
-        };
-
-        p.draw = () => {
-            p.background(151);
-
-            p.loadPixels();
-
-            for (let x = 0; x < p.width; x++) {
-                for (let y = 0; y < p.height; y++) {
-                    const index = x + y * p.width;
-                    let sum = 0;
-
-                    for (let i = 0; i < numBlobs; i++) {
-                        const d = p.dist(x, y, blobs[i].pos.x, blobs[i].pos.y);
-                        sum += 10 * blobs[i].r / d;
-                    }
-
-                    p.pixels[index] = p.color(sum, 255, 255);
-                }
-            }
-
-            p.updatePixels();
-
-            for (let i = 0; i < numBlobs; i++) {
+            for(let i = 0;i<blobs.length;i++){
                 blobs[i].update();
-                blobs[i].show();
             }
-        }
 
-    };
+            setBlobs([...blobs]);
+
+        }, 1000/30);
+
+        return () => clearInterval(timer)
+    }, []);
 
     return (
-
-        {/*}<ProcessingView style={{flex: 1}} sketch={sketch}/>{*/}
+        <View>
+            <Text>lava lamp</Text>
+            <Svg
+                viewBox={`0 0 ${width} ${height}`}
+                width={width}
+                height={height}
+                style={styles.svg}
+            >
+                {blobs.map(blob => {
+                    return <CirclePath
+                        x={blob.x}
+                        y={blob.y}
+                        radius={blob.radius}
+                    />
+                })}
+            </Svg>
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    svg: {
+        borderWidth: 2,
+        borderColor: 'red',
+    },
+});

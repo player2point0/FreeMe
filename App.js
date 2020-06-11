@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 
 //todo add horizontal animations for transitions
 
-export default function App(props) {
+export default function App() {
   const isLoadingComplete = useCachedResources();
 
   if (!isLoadingComplete) {

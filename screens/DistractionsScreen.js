@@ -3,12 +3,14 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 import colors from '../constants/Colors'
 import {height, width} from '../constants/Layout';
 import {DistractionButton} from '../components/DistractionsButtons';
+import LavaLamp from '../components/LavaLamp';
 
 export default function DistractionScreen({navigation}) {
     return (
         <View
             style={styles.container}
         >
+            {/*}
             <DistractionButton
                 navigation={navigation}
                 navigationScreen={"ProgressScreen"}
@@ -21,7 +23,6 @@ export default function DistractionScreen({navigation}) {
                 color={colors.blue}
                 style={styles.feelingsButton}
             />
-
             <Button
                 title="Post Work"
                 onPress={() =>
@@ -29,6 +30,8 @@ export default function DistractionScreen({navigation}) {
                 }
                 style={styles.postWorkButton}
             />
+            {*/}
+            <LavaLamp/>
         </View>
     );
 }

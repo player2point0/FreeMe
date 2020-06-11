@@ -1,14 +1,18 @@
--make feeling screen
--make progress screen
 -research react native do not disturb
 -add tests https://jestjs.io/docs/en/snapshot-testing
 -create a custom button
 -remove app header and add custom back buttons
 
---lava lamp pomodoro timer--
--threejs or processing for react native
-https://github.com/cawfree/react-native-blobular
-https://www.themaninblue.com/experiment/Blobular/
+--lava lamp--
+-meta balls performance https://www.gamedev.net/tutorials/_/technical/graphics-programming-and-theory/exploring-metaballs-and-isosurfaces-in-2d-r2556/
+- https://en.wikipedia.org/wiki/Metaballs
+
+-fluid dynamics https://peeke.nl/simulating-blobs-of-fluid
+
+-svg animation libary https://github.com/wcandillon/react-native-redash
+-svg performance https://stackoverflow.com/questions/39094349/how-to-make-svg-animation-with-animated-in-react-native
+
+--pomodoro timer--
 https://github.com/expo/pomodoroexp
 
 

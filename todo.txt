@@ -1,31 +1,4 @@
--research react native do not disturb
--research redux
--add tests https://jestjs.io/docs/en/snapshot-testing
--create a custom button
--remove app header and add custom back buttons
-
---lava lamp--
-- meta balls performance https://www.gamedev.net/tutorials/_/technical/graphics-programming-and-theory/exploring-metaballs-and-isosurfaces-in-2d-r2556/
-- https://en.wikipedia.org/wiki/Metaballs
-
--making curves
-https://www.blobmaker.app/
-https://codepen.io/osublake/pen/vdzjyg
-https://github.com/ariutta/catmullrom2bezier/blob/master/catmullrom2bezier.js
-https://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline
-https://ionic-v4-angular-tabs-1x83k4.stackblitz.io/
-
--fluid dynamics https://peeke.nl/simulating-blobs-of-fluid
-
--svg animation libary https://github.com/wcandillon/react-native-redash
--svg performance https://stackoverflow.com/questions/39094349/how-to-make-svg-animation-with-animated-in-react-native
-
-
---pomodoro timer--
-https://github.com/expo/pomodoroexp
--implement ui
--implement code functionality and flow between screens
-
+--core--
 
 --inspo--
 https://github.com/osamaq/spotify-lite

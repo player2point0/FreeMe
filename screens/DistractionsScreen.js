@@ -10,7 +10,6 @@ export default function DistractionScreen({navigation}) {
         <View
             style={styles.container}
         >
-            {/*}
             <DistractionButton
                 navigation={navigation}
                 navigationScreen={"ProgressScreen"}
@@ -30,8 +29,7 @@ export default function DistractionScreen({navigation}) {
                 }
                 style={styles.postWorkButton}
             />
-            {*/}
-            <LavaLamp/>
+            {/*}<LavaLamp/>{*/}
         </View>
     );
 }

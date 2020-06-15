@@ -1,12 +1,28 @@
-import React from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, View, Button} from 'react-native';
 import colors from '../constants/Colors'
 import {height, width} from '../constants/Layout';
 import {DistractionButton} from '../components/DistractionsButtons';
 import LavaLamp from '../components/LavaLamp';
-import Pomodoro from "../components/Pomodoro";
+import Pomodoro, {POMODORO_START_TIME} from "../components/Pomodoro";
 
 export default function DistractionScreen({navigation}) {
+
+    const [pomodoro, setPomodoro] = useState({
+       started: false,
+       paused: false,
+       timeRemaining: POMODORO_START_TIME,
+    });
+
+
+    useEffect(() => {
+
+
+        alert(pomodoro.timeRemaining);
+
+
+    });
+
     return (
         <View
             style={styles.container}
@@ -14,6 +30,8 @@ export default function DistractionScreen({navigation}) {
             <LavaLamp/>
             <Pomodoro
                 style={styles.pomodoro}
+                pomodoro={pomodoro}
+                setPomodoro={setPomodoro}
             />
             <DistractionButton
                 navigation={navigation}

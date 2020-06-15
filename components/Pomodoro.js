@@ -1,53 +1,86 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 
-const START_TIME = 25 * 60;
+export const POMODORO_START_TIME = 25 * 60;
 
-
-export default function Pomodoro({style}) {
-
-    const [started, setStarted] = useState(false);
-    const [timeRemaining, setTimeRemaining] = useState(START_TIME);
-
-    const onStartPress = () => {
-        setStarted(true);
-    };
-
+export default function Pomodoro({style, pomodoro, setPomodoro}) {
 
     useEffect(() => {
-        let timer = setInterval(() => {
+        let pomodoroTimer = setInterval(() => {
 
-            if (started) {
-                const newTimeRemaining = timeRemaining - 1;
+            if(pomodoro.started){
+                let newPomodoro = pomodoro;
+                const newTimeRemaining = pomodoro.timeRemaining - 1;
 
-                //alert(newTimeRemaining);
+                if(newTimeRemaining <= 0){
+                    newPomodoro.timeRemaining = 0;
 
-                setTimeRemaining(newTimeRemaining);
+                    //todo open the post work screen
+                }
+
+                else{
+                    newPomodoro.timeRemaining = newTimeRemaining;
+                }
+
+                setPomodoro(newPomodoro);
             }
 
         }, 1000);
 
-        return () => clearInterval(timer);
-    }, []);
+        return () => clearInterval(pomodoroTimer);
+    }, [pomodoro.started, pomodoro.timeRemaining]);
 
-    const formatTime = (time) => {
-        let min = time / 60;
-        let sec = time % min;
-
-        return Math.round(min)+":"+Math.round(sec);
+    const onStartPress = () => {
+        let newPomodoro = pomodoro;
+        newPomodoro.started = true;
+        
+        setPomodoro(newPomodoro);
     };
 
+    const onBreakPress = () => {
+        let newPomodoro = pomodoro;
+        newPomodoro.paused = true;
+
+        setPomodoro(newPomodoro);
+    };
 
     return (
         <View
             style={style}
         >
-            <Text>{timeRemaining}</Text>
-            <Text>{formatTime(timeRemaining)}</Text>
-            {!started && <Button
+            <Text
+            style={styles.text}
+            >{formatTime(pomodoro.timeRemaining)}</Text>
+            {!pomodoro.started && <Button
                 title="start"
                 onPress={onStartPress}
             />}
+            {pomodoro.started && <Button
+                title="break"
+                onPress={onBreakPress}
+            />}
         </View>
     );
+}
+
+const styles = StyleSheet.create({
+    text: {
+        textAlign: 'center',
+        fontSize: 30,
+    },
+});
+
+function formatTime(time) {
+    let hours = Math.floor(time / 3600);
+    let mins = Math.floor((time - hours * 3600) / 60);
+    let seconds = Math.round(time - hours * 3600 - mins * 60);
+
+    if(hours === 0) return padNumWithZero(mins) + ":" + padNumWithZero(seconds);
+
+    return padNumWithZero(hours) + ":" + padNumWithZero(mins) + ":" + padNumWithZero(seconds);
+}
+
+function padNumWithZero(val) {
+    if(val < 10) return "0"+val;
+    return val;
 }

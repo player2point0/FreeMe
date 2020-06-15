@@ -39,7 +39,7 @@ class Blob {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.forceXRange = 2;
+        this.forceXRange = 4;
         this.forceY = Math.random() * 5;
     }
 
@@ -56,10 +56,11 @@ class Blob {
 export default function LavaLamp() {
 
     const [blobs, setBlobs] = useState([
-        new Blob(100, 100, 50),
+        new Blob(100, 100, 25),
         new Blob(150, 150, 50),
-        new Blob(250, 300, 50),
+        new Blob(250, 300, 25),
         new Blob(200, 200, 50),
+        new Blob(200, 400, 75),
     ]);
 
     let tempPixelGrid = [];
@@ -114,7 +115,7 @@ export default function LavaLamp() {
         }, 1000 / 10);
 
         return () => clearInterval(timer)
-    }, []);
+    }, [blobs, pixelGrid]);
 
     return (
         <View>

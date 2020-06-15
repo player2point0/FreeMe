@@ -4,12 +4,17 @@ import colors from '../constants/Colors'
 import {height, width} from '../constants/Layout';
 import {DistractionButton} from '../components/DistractionsButtons';
 import LavaLamp from '../components/LavaLamp';
+import Pomodoro from "../components/Pomodoro";
 
 export default function DistractionScreen({navigation}) {
     return (
         <View
             style={styles.container}
         >
+            <LavaLamp/>
+            <Pomodoro
+                style={styles.pomodoro}
+            />
             <DistractionButton
                 navigation={navigation}
                 navigationScreen={"ProgressScreen"}
@@ -29,7 +34,6 @@ export default function DistractionScreen({navigation}) {
                 }
                 style={styles.postWorkButton}
             />
-            {/*}<LavaLamp/>{*/}
         </View>
     );
 }
@@ -53,6 +57,14 @@ const styles = StyleSheet.create({
         bottom: 100,
     },
     postWorkButton: {
-        backgroundColor:colors.blue,
+        backgroundColor: colors.blue,
+    },
+    pomodoro:{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: width,
+        borderColor: 'black',
+        borderWidth: 1,
     },
 });

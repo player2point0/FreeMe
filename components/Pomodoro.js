@@ -3,45 +3,36 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 
 export const POMODORO_START_TIME = 25 * 60;
 
-export default function Pomodoro({style, pomodoro, setPomodoro}) {
+export default function Pomodoro({style, started, setStarted, timeRemaining, setTimeRemaining, paused, setPaused}) {
 
     useEffect(() => {
         let pomodoroTimer = setInterval(() => {
 
-            if(pomodoro.started){
-                let newPomodoro = pomodoro;
-                const newTimeRemaining = pomodoro.timeRemaining - 1;
+            if(started && !paused){
+                const newTimeRemaining = timeRemaining - 1;
 
                 if(newTimeRemaining <= 0){
-                    newPomodoro.timeRemaining = 0;
+                    setTimeRemaining(0);
 
                     //todo open the post work screen
                 }
 
                 else{
-                    newPomodoro.timeRemaining = newTimeRemaining;
+                    setTimeRemaining(newTimeRemaining);
                 }
-
-                setPomodoro(newPomodoro);
             }
 
         }, 1000);
 
         return () => clearInterval(pomodoroTimer);
-    }, [pomodoro.started, pomodoro.timeRemaining]);
+    }, [started, timeRemaining, paused]);
 
     const onStartPress = () => {
-        let newPomodoro = pomodoro;
-        newPomodoro.started = true;
-        
-        setPomodoro(newPomodoro);
+        setStarted(true);
     };
 
     const onBreakPress = () => {
-        let newPomodoro = pomodoro;
-        newPomodoro.paused = true;
-
-        setPomodoro(newPomodoro);
+        setPaused(!paused);
     };
 
     return (
@@ -50,12 +41,12 @@ export default function Pomodoro({style, pomodoro, setPomodoro}) {
         >
             <Text
             style={styles.text}
-            >{formatTime(pomodoro.timeRemaining)}</Text>
-            {!pomodoro.started && <Button
+            >{formatTime(timeRemaining)}</Text>
+            {!started && <Button
                 title="start"
                 onPress={onStartPress}
             />}
-            {pomodoro.started && <Button
+            {started && <Button
                 title="break"
                 onPress={onBreakPress}
             />}

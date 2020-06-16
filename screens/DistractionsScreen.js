@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, Button} from 'react-native';
+import {StyleSheet, View, Button, Text} from 'react-native';
 import colors from '../constants/Colors'
 import {height, width} from '../constants/Layout';
 import {DistractionButton} from '../components/DistractionsButtons';
@@ -8,20 +8,17 @@ import Pomodoro, {POMODORO_START_TIME} from "../components/Pomodoro";
 
 export default function DistractionScreen({navigation}) {
 
+    //todo refactor to use an object or with redux
+    /*
     const [pomodoro, setPomodoro] = useState({
-       started: false,
-       paused: false,
-       timeRemaining: POMODORO_START_TIME,
+        started: false,
+        paused: false,
+        timeRemaining: POMODORO_START_TIME,
     });
-
-
-    useEffect(() => {
-
-
-        alert(pomodoro.timeRemaining);
-
-
-    });
+    */
+    const [started, setStarted] = useState(false);
+    const [paused, setPaused] = useState(false);
+    const [timeRemaining, setTimeRemaining] = useState(POMODORO_START_TIME);
 
     return (
         <View
@@ -30,8 +27,12 @@ export default function DistractionScreen({navigation}) {
             <LavaLamp/>
             <Pomodoro
                 style={styles.pomodoro}
-                pomodoro={pomodoro}
-                setPomodoro={setPomodoro}
+                started={started}
+                setStarted={setStarted}
+                timeRemaining={timeRemaining}
+                setTimeRemaining={setTimeRemaining}
+                paused={paused}
+                setPaused={setPaused}
             />
             <DistractionButton
                 navigation={navigation}
@@ -45,13 +46,16 @@ export default function DistractionScreen({navigation}) {
                 color={colors.blue}
                 style={styles.feelingsButton}
             />
-            <Button
-                title="Post Work"
-                onPress={() =>
-                    navigation.navigate('PostWorkScreen')
-                }
+            <View
                 style={styles.postWorkButton}
-            />
+            >
+                <Button
+                    title="Post Work"
+                    onPress={() =>
+                        navigation.navigate('PostWorkScreen')
+                    }
+                />
+            </View>
         </View>
     );
 }
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 0,
         bottom: 100,
-        transform: [{ rotate: '180deg'}],
+        transform: [{rotate: '180deg'}],
     },
     progressButton: {
         position: 'absolute',
@@ -75,9 +79,12 @@ const styles = StyleSheet.create({
         bottom: 100,
     },
     postWorkButton: {
-        backgroundColor: colors.blue,
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: width,
     },
-    pomodoro:{
+    pomodoro: {
         position: 'absolute',
         top: 0,
         left: 0,

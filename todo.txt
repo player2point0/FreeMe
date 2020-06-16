@@ -1,5 +1,3 @@
---core--
-
 --inspo--
 https://github.com/osamaq/spotify-lite
 https://github.com/mariodev12/react-native-netflix

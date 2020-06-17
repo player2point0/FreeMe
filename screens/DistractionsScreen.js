@@ -14,6 +14,7 @@ export default function DistractionScreen({navigation}) {
         >
             <LavaLamp/>
             <Pomodoro
+                navigation={navigation}
                 style={styles.pomodoro}
             />
             <DistractionButton
@@ -28,16 +29,6 @@ export default function DistractionScreen({navigation}) {
                 color={colors.blue}
                 style={styles.feelingsButton}
             />
-            <View
-                style={styles.postWorkButton}
-            >
-                <Button
-                    title="Post Work"
-                    onPress={() =>
-                        navigation.navigate('PostWorkScreen')
-                    }
-                />
-            </View>
         </View>
     );
 }

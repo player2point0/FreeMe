@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
-import {useDispatch, useSelector, useStore} from 'react-redux';
-import {START_POMODORO, TOGGLE_PAUSE_POMODORO, DECREMENT_POMODORO_TIMER} from "../redux/Actions";
+import {useDispatch, useSelector} from 'react-redux';
+import {START_POMODORO, TOGGLE_PAUSE_POMODORO,
+    DECREMENT_POMODORO_TIMER, RESET_POMODORO} from "../redux/Actions";
 
-export const POMODORO_START_TIME = 25 * 60;
+export const POMODORO_START_TIME = 1 * 60;
 
-export default function Pomodoro({style}) {
+export default function Pomodoro({style, navigation}) {
 
     const started = useSelector(state => state.pomodoro.pomodoroStarted);
     const paused = useSelector(state => state.pomodoro.pomodoroPaused);
@@ -19,9 +20,10 @@ export default function Pomodoro({style}) {
                 const newTimeRemaining = timeRemaining - 1;
 
                 if (newTimeRemaining < 0) {
-
-                    //todo open the post work screen
-                } else {
+                    navigation.navigate('PostWorkScreen');
+                    dispatch({type: RESET_POMODORO});
+                }
+                else {
                     dispatch({type: DECREMENT_POMODORO_TIMER});
                 }
             }
@@ -37,6 +39,7 @@ export default function Pomodoro({style}) {
 
     const onBreakPress = () => {
         dispatch({type: TOGGLE_PAUSE_POMODORO});
+        navigation.navigate('FeelingsScreen');
     };
 
     return (

@@ -1,24 +1,28 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
+import {useDispatch, useSelector, useStore} from 'react-redux';
+import {START_POMODORO, TOGGLE_PAUSE_POMODORO, DECREMENT_POMODORO_TIMER} from "../redux/Actions";
 
 export const POMODORO_START_TIME = 25 * 60;
 
-export default function Pomodoro({style, started, setStarted, timeRemaining, setTimeRemaining, paused, setPaused}) {
+export default function Pomodoro({style}) {
+
+    const started = useSelector(state => state.pomodoro.pomodoroStarted);
+    const paused = useSelector(state => state.pomodoro.pomodoroPaused);
+    const timeRemaining = useSelector(state => state.pomodoro.pomodoroTimeRemaining);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let pomodoroTimer = setInterval(() => {
 
-            if(started && !paused){
+            if (started && !paused) {
                 const newTimeRemaining = timeRemaining - 1;
 
-                if(newTimeRemaining <= 0){
-                    setTimeRemaining(0);
+                if (newTimeRemaining < 0) {
 
                     //todo open the post work screen
-                }
-
-                else{
-                    setTimeRemaining(newTimeRemaining);
+                } else {
+                    dispatch({type: DECREMENT_POMODORO_TIMER});
                 }
             }
 
@@ -28,11 +32,11 @@ export default function Pomodoro({style, started, setStarted, timeRemaining, set
     }, [started, timeRemaining, paused]);
 
     const onStartPress = () => {
-        setStarted(true);
+        dispatch({type: START_POMODORO});
     };
 
     const onBreakPress = () => {
-        setPaused(!paused);
+        dispatch({type: TOGGLE_PAUSE_POMODORO});
     };
 
     return (
@@ -40,7 +44,7 @@ export default function Pomodoro({style, started, setStarted, timeRemaining, set
             style={style}
         >
             <Text
-            style={styles.text}
+                style={styles.text}
             >{formatTime(timeRemaining)}</Text>
             {!started && <Button
                 title="start"
@@ -66,12 +70,12 @@ function formatTime(time) {
     let mins = Math.floor((time - hours * 3600) / 60);
     let seconds = Math.round(time - hours * 3600 - mins * 60);
 
-    if(hours === 0) return padNumWithZero(mins) + ":" + padNumWithZero(seconds);
+    if (hours === 0) return padNumWithZero(mins) + ":" + padNumWithZero(seconds);
 
     return padNumWithZero(hours) + ":" + padNumWithZero(mins) + ":" + padNumWithZero(seconds);
 }
 
 function padNumWithZero(val) {
-    if(val < 10) return "0"+val;
+    if (val < 10) return "0" + val;
     return val;
 }

@@ -1,7 +1,10 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import {Platform, StatusBar, StyleSheet, View} from 'react-native';
+
+import {Provider} from 'react-redux';
+import store from './redux/Store';
 
 import DistractionsScreen from './screens/DistractionsScreen.js';
 import ProgressScreen from './screens/ProgressScreen.js';
@@ -16,51 +19,53 @@ const Stack = createStackNavigator();
 //todo add horizontal animations for transitions
 
 export default function App() {
-  const isLoadingComplete = useCachedResources();
+    const isLoadingComplete = useCachedResources();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-        <NavigationContainer>
-          <Stack.Navigator
-              initialRouteName="DistractionsScreen"
-              screenOptions={{
-                headerShown: true,
-              }}
-          >
-            <Stack.Screen
-                name="DistractionsScreen"
-                component={DistractionsScreen}
-            />
-            <Stack.Screen
-                name="ProgressScreen"
-                component={ProgressScreen}
-            />
-            <Stack.Screen
-                name="FeelingsScreen"
-                component={FeelingsScreen}
-            />
-            <Stack.Screen
-                name="PostWorkScreen"
-                component={PostWorkScreen}
-            />
-            <Stack.Screen
-                name="RecommendationScreen"
-                component={RecommendationScreen}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
-    );
-  }
+    if (!isLoadingComplete) {
+        return null;
+    } else {
+        return (
+            <Provider store={store}>
+                <View style={styles.container}>
+                    {Platform.OS === 'ios' && <StatusBar barStyle="dark-content"/>}
+                    <NavigationContainer>
+                        <Stack.Navigator
+                            initialRouteName="DistractionsScreen"
+                            screenOptions={{
+                                headerShown: true,
+                            }}
+                        >
+                            <Stack.Screen
+                                name="DistractionsScreen"
+                                component={DistractionsScreen}
+                            />
+                            <Stack.Screen
+                                name="ProgressScreen"
+                                component={ProgressScreen}
+                            />
+                            <Stack.Screen
+                                name="FeelingsScreen"
+                                component={FeelingsScreen}
+                            />
+                            <Stack.Screen
+                                name="PostWorkScreen"
+                                component={PostWorkScreen}
+                            />
+                            <Stack.Screen
+                                name="RecommendationScreen"
+                                component={RecommendationScreen}
+                            />
+                        </Stack.Navigator>
+                    </NavigationContainer>
+                </View>
+            </Provider>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
 });

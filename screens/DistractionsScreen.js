@@ -4,21 +4,9 @@ import colors from '../constants/Colors'
 import {height, width} from '../constants/Layout';
 import {DistractionButton} from '../components/DistractionsButtons';
 import LavaLamp from '../components/LavaLamp';
-import Pomodoro, {POMODORO_START_TIME} from "../components/Pomodoro";
+import Pomodoro from "../components/Pomodoro";
 
 export default function DistractionScreen({navigation}) {
-
-    //todo refactor to use an object or with redux
-    /*
-    const [pomodoro, setPomodoro] = useState({
-        started: false,
-        paused: false,
-        timeRemaining: POMODORO_START_TIME,
-    });
-    */
-    const [started, setStarted] = useState(false);
-    const [paused, setPaused] = useState(false);
-    const [timeRemaining, setTimeRemaining] = useState(POMODORO_START_TIME);
 
     return (
         <View
@@ -27,12 +15,6 @@ export default function DistractionScreen({navigation}) {
             <LavaLamp/>
             <Pomodoro
                 style={styles.pomodoro}
-                started={started}
-                setStarted={setStarted}
-                timeRemaining={timeRemaining}
-                setTimeRemaining={setTimeRemaining}
-                paused={paused}
-                setPaused={setPaused}
             />
             <DistractionButton
                 navigation={navigation}

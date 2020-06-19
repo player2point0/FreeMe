@@ -14,11 +14,19 @@ import RecommendationScreen from './screens/RecommendationScreen.js';
 
 import useCachedResources from './hooks/useCachedResources';
 
+import Amplify from 'aws-amplify';
+import config from './aws-exports';
+import { withAuthenticator } from 'aws-amplify-react-native'
+import Text from "react-native-web/dist/exports/Text";
+Amplify.configure(config);
+
 const Stack = createStackNavigator();
 
 //todo add horizontal animations for transitions
 
-export default function App() {
+export default withAuthenticator(App)
+
+async function App() {
     const isLoadingComplete = useCachedResources();
 
     if (!isLoadingComplete) {

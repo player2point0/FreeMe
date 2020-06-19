@@ -1,0 +1,28 @@
+#@auth(rules: [{ allow: owner }])
+
+type Feelings @model {
+  id: ID!
+  userId: ID!
+  time: AWSDateTime!
+  tired: Int
+  happy: Int
+  bored: Int
+  hungry: Int
+}
+
+type PostWork @model {
+  id: ID!
+  userId: ID!
+  time: AWSDateTime!
+  focus: Int
+  productive: Int
+  distracted: Int
+  flow: Int
+}
+
+type Break @model {
+  id: ID!
+  userId: ID!
+  duration: Int
+  activity: String
+}

@@ -11,22 +11,21 @@ import ProgressScreen from './screens/ProgressScreen.js';
 import FeelingsScreen from './screens/FeelingsScreen.js';
 import PostWorkScreen from './screens/PostWorkScreen.js';
 import RecommendationScreen from './screens/RecommendationScreen.js';
+import AuthScreen from "./screens/AuthScreen";
 
 import useCachedResources from './hooks/useCachedResources';
 
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
-import { withAuthenticator } from 'aws-amplify-react-native'
-import Text from "react-native-web/dist/exports/Text";
 Amplify.configure(config);
 
 const Stack = createStackNavigator();
 
 //todo add horizontal animations for transitions
 
-export default withAuthenticator(App)
+export default App
 
-async function App() {
+function App() {
     const isLoadingComplete = useCachedResources();
 
     if (!isLoadingComplete) {
@@ -38,11 +37,15 @@ async function App() {
                     {Platform.OS === 'ios' && <StatusBar barStyle="dark-content"/>}
                     <NavigationContainer>
                         <Stack.Navigator
-                            initialRouteName="DistractionsScreen"
+                            initialRouteName="AuthScreen"
                             screenOptions={{
                                 headerShown: true,
                             }}
                         >
+                            <Stack.Screen
+                                name="AuthScreen"
+                                component={AuthScreen}
+                            />
                             <Stack.Screen
                                 name="DistractionsScreen"
                                 component={DistractionsScreen}

@@ -12,25 +12,15 @@ async function signOut() {
     }
 }
 
-async function signIn(username, password) {
-    try {
-        const user = await Auth.signIn(username, password);
-        alert(user.getUsername());
-    } catch (error) {
-        console.log('error signing in', error);
-    }
-}
-
 async function signUp(username, password) {
     try {
         const user = await Auth.signUp({
             username,
             password,
-            attributes: {
-            }
+            attributes: {}
         });
 
-        console.log({ user });
+        console.log({user});
     } catch (error) {
         console.log('error signing up:', error);
     }
@@ -38,24 +28,32 @@ async function signUp(username, password) {
 
 export default function AuthScreen({navigation}) {
 
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(async () => {
-        Auth.currentUserInfo()
+    useEffect(() => {
+        Auth.currentAuthenticatedUser()
             .then(currentUser => {
-                setUser(currentUser.accessKeyId);
+                setUser(currentUser);
             })
             .catch(error => {
                 console.log('error getting current user', error);
             });
     }, []);
 
-
     const onSignInPress = () => {
-      //todo check username and password
-        signIn(username, password);
+        //todo check username and password
+        Auth.signIn(username, password)
+            .then(user => {
+                setUser(user);
+            })
+            .catch(error => {
+                console.log('error signing in', error);
+            });
+
+        setUsername('');
+        setPassword('');
     };
 
     const onUsernameChange = (val) => {
@@ -69,7 +67,7 @@ export default function AuthScreen({navigation}) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{user === '' ? 'no user' : user}</Text>
+            <Text style={styles.text}>{!user ? 'no user' : user.getUsername()}</Text>
             <TextInput
                 style={styles.textInput}
                 onChangeText={onUsernameChange}

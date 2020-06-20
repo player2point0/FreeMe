@@ -12,6 +12,7 @@ async function signOut() {
     }
 }
 
+//todo add sign up https://aws-amplify.github.io/amplify-js/api/classes/authclass.html
 async function signUp(username, password) {
     try {
         const user = await Auth.signUp({

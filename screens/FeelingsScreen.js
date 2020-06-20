@@ -3,11 +3,27 @@ import {StyleSheet, View, Button} from 'react-native';
 
 import FeelingSlider from '../components/FeelingSlider';
 
+import {createFeelings} from "../src/graphql/mutations";
+import {API, graphqlOperation, Auth} from "aws-amplify";
+
 export default function FeelingsScreen({navigation}) {
 
     const onDone = () => {
-        //todo get the values from the feeling sliders
-        //todo send the values to the database
+        API.graphql(graphqlOperation(createFeelings, {
+            input: {
+                tired: tiredVal,
+                happy: happyVal,
+                bored: boredVal,
+                hungry: hungryVal,
+            },
+            authMode: 'AMAZON_COGNITO_USER_POOLS',
+        }))
+            .then(value => {
+                //alert('saved');
+            })
+            .catch(error => {
+                console.log('error adding feeling', error);
+            });
         //todo using the feelings and the post work values send a request to the recommendation server
         //todo display a loading animation
         //todo navigate to a recommendation or back to the distraction screen depending on the server response
@@ -52,7 +68,7 @@ export default function FeelingsScreen({navigation}) {
                 sliderName={'Hungry...'}
                 sliderValue={hungryVal}
                 handleSliderChange={(val) => {
-                    setHappyVal(val)
+                    setHungryVal(val)
                 }}
             />
             <Button

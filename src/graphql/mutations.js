@@ -9,13 +9,13 @@ export const createFeelings = /* GraphQL */ `
     createFeelings(input: $input, condition: $condition) {
       id
       userId
-      time
       tired
       happy
       bored
       hungry
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -27,13 +27,13 @@ export const updateFeelings = /* GraphQL */ `
     updateFeelings(input: $input, condition: $condition) {
       id
       userId
-      time
       tired
       happy
       bored
       hungry
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -45,13 +45,13 @@ export const deleteFeelings = /* GraphQL */ `
     deleteFeelings(input: $input, condition: $condition) {
       id
       userId
-      time
       tired
       happy
       bored
       hungry
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -63,13 +63,13 @@ export const createPostWork = /* GraphQL */ `
     createPostWork(input: $input, condition: $condition) {
       id
       userId
-      time
       focus
       productive
       distracted
       flow
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -81,13 +81,13 @@ export const updatePostWork = /* GraphQL */ `
     updatePostWork(input: $input, condition: $condition) {
       id
       userId
-      time
       focus
       productive
       distracted
       flow
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -99,13 +99,13 @@ export const deletePostWork = /* GraphQL */ `
     deletePostWork(input: $input, condition: $condition) {
       id
       userId
-      time
       focus
       productive
       distracted
       flow
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -121,6 +121,7 @@ export const createBreak = /* GraphQL */ `
       activity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -136,6 +137,7 @@ export const updateBreak = /* GraphQL */ `
       activity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -151,6 +153,7 @@ export const deleteBreak = /* GraphQL */ `
       activity
       createdAt
       updatedAt
+      owner
     }
   }
 `;

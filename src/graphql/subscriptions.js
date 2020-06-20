@@ -2,128 +2,131 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateFeelings = /* GraphQL */ `
-  subscription OnCreateFeelings {
-    onCreateFeelings {
+  subscription OnCreateFeelings($owner: String!) {
+    onCreateFeelings(owner: $owner) {
       id
       userId
-      time
       tired
       happy
       bored
       hungry
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdateFeelings = /* GraphQL */ `
-  subscription OnUpdateFeelings {
-    onUpdateFeelings {
+  subscription OnUpdateFeelings($owner: String!) {
+    onUpdateFeelings(owner: $owner) {
       id
       userId
-      time
       tired
       happy
       bored
       hungry
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeleteFeelings = /* GraphQL */ `
-  subscription OnDeleteFeelings {
-    onDeleteFeelings {
+  subscription OnDeleteFeelings($owner: String!) {
+    onDeleteFeelings(owner: $owner) {
       id
       userId
-      time
       tired
       happy
       bored
       hungry
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onCreatePostWork = /* GraphQL */ `
-  subscription OnCreatePostWork {
-    onCreatePostWork {
+  subscription OnCreatePostWork($owner: String!) {
+    onCreatePostWork(owner: $owner) {
       id
       userId
-      time
       focus
       productive
       distracted
       flow
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdatePostWork = /* GraphQL */ `
-  subscription OnUpdatePostWork {
-    onUpdatePostWork {
+  subscription OnUpdatePostWork($owner: String!) {
+    onUpdatePostWork(owner: $owner) {
       id
       userId
-      time
       focus
       productive
       distracted
       flow
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeletePostWork = /* GraphQL */ `
-  subscription OnDeletePostWork {
-    onDeletePostWork {
+  subscription OnDeletePostWork($owner: String!) {
+    onDeletePostWork(owner: $owner) {
       id
       userId
-      time
       focus
       productive
       distracted
       flow
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onCreateBreak = /* GraphQL */ `
-  subscription OnCreateBreak {
-    onCreateBreak {
+  subscription OnCreateBreak($owner: String!) {
+    onCreateBreak(owner: $owner) {
       id
       userId
       duration
       activity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdateBreak = /* GraphQL */ `
-  subscription OnUpdateBreak {
-    onUpdateBreak {
+  subscription OnUpdateBreak($owner: String!) {
+    onUpdateBreak(owner: $owner) {
       id
       userId
       duration
       activity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeleteBreak = /* GraphQL */ `
-  subscription OnDeleteBreak {
-    onDeleteBreak {
+  subscription OnDeleteBreak($owner: String!) {
+    onDeleteBreak(owner: $owner) {
       id
       userId
       duration
       activity
       createdAt
       updatedAt
+      owner
     }
   }
 `;

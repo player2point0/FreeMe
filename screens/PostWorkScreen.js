@@ -2,11 +2,28 @@ import React, {useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import FeelingSlider from "../components/FeelingSlider";
 
+import {createPostWork} from "../src/graphql/mutations";
+import {API, Auth, graphqlOperation} from "aws-amplify";
+
 export default function FeelingsScreen({navigation}) {
     const onDone = () => {
-        //todo get the values from the feeling sliders
-        //todo send the values to the database
 
+        API.graphql(graphqlOperation(createPostWork, {
+            input: {
+                focus: focusVal,
+                productive: productiveVal,
+                distracted: distractedVal,
+                flow: flowVal,
+            },
+        }))
+            .then(value => {
+                //alert('saved');
+            })
+            .catch(error => {
+                console.log('error adding post work', error);
+            });
+
+        //todo pass the slider values to the feelings screen
         navigation.navigate('FeelingsScreen');
     };
 

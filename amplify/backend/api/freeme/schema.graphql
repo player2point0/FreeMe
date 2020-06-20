@@ -1,28 +1,23 @@
 #@auth(rules: [{ allow: owner }])
 
-type Feelings @model {
+type Feelings @model @auth(rules: [{ allow: owner }]){
   id: ID!
-  userId: ID!
-  time: AWSDateTime!
   tired: Int
   happy: Int
   bored: Int
   hungry: Int
 }
 
-type PostWork @model {
+type PostWork @model @auth(rules: [{ allow: owner }]){
   id: ID!
-  userId: ID!
-  time: AWSDateTime!
   focus: Int
   productive: Int
   distracted: Int
   flow: Int
 }
 
-type Break @model {
+type Break @model @auth(rules: [{ allow: owner }]){
   id: ID!
-  userId: ID!
   duration: Int
   activity: String
 }

@@ -36,6 +36,7 @@ export default function AuthScreen({navigation}) {
     useEffect(() => {
         Auth.currentAuthenticatedUser()
             .then(currentUser => {
+                console.log(currentUser);
                 setUser(currentUser);
             })
             .catch(error => {
@@ -73,7 +74,7 @@ export default function AuthScreen({navigation}) {
                 style={styles.textInput}
                 onChangeText={onUsernameChange}
                 value={username}
-                placeholder={'email or phone'}
+                placeholder={'email'}
             />
             <TextInput
                 style={styles.textInput}

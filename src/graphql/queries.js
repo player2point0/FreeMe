@@ -6,13 +6,13 @@ export const getFeelings = /* GraphQL */ `
     getFeelings(id: $id) {
       id
       userId
-      time
       tired
       happy
       bored
       hungry
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -26,13 +26,13 @@ export const listFeelingss = /* GraphQL */ `
       items {
         id
         userId
-        time
         tired
         happy
         bored
         hungry
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }
@@ -43,13 +43,13 @@ export const getPostWork = /* GraphQL */ `
     getPostWork(id: $id) {
       id
       userId
-      time
       focus
       productive
       distracted
       flow
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -63,13 +63,13 @@ export const listPostWorks = /* GraphQL */ `
       items {
         id
         userId
-        time
         focus
         productive
         distracted
         flow
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }
@@ -84,6 +84,7 @@ export const getBreak = /* GraphQL */ `
       activity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -101,6 +102,7 @@ export const listBreaks = /* GraphQL */ `
         activity
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }

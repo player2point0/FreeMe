@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Slider} from 'react-native';
 
-
 //todo add an interpolate between states and a nice animation
 // e.g. half way between two numbers https://www.youtube.com/watch?v=8ozJiGyZGrc&t=25s
 // https://codepen.io/chrisgannon/pen/GZNgLw

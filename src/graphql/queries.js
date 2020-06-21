@@ -5,7 +5,6 @@ export const getFeelings = /* GraphQL */ `
   query GetFeelings($id: ID!) {
     getFeelings(id: $id) {
       id
-      userId
       tired
       happy
       bored
@@ -25,7 +24,6 @@ export const listFeelingss = /* GraphQL */ `
     listFeelingss(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        userId
         tired
         happy
         bored
@@ -42,7 +40,6 @@ export const getPostWork = /* GraphQL */ `
   query GetPostWork($id: ID!) {
     getPostWork(id: $id) {
       id
-      userId
       focus
       productive
       distracted
@@ -62,7 +59,6 @@ export const listPostWorks = /* GraphQL */ `
     listPostWorks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        userId
         focus
         productive
         distracted
@@ -79,7 +75,6 @@ export const getBreak = /* GraphQL */ `
   query GetBreak($id: ID!) {
     getBreak(id: $id) {
       id
-      userId
       duration
       activity
       createdAt
@@ -97,7 +92,6 @@ export const listBreaks = /* GraphQL */ `
     listBreaks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        userId
         duration
         activity
         createdAt

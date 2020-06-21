@@ -4,9 +4,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import {START_POMODORO, TOGGLE_PAUSE_POMODORO,
     DECREMENT_POMODORO_TIMER, RESET_POMODORO} from "../redux/Actions";
 
-export const POMODORO_START_TIME = 1 * 60;
+export const POMODORO_START_TIME = 25 * 60;
 
 export default function Pomodoro({style, navigation}) {
+
+    //todo add a stop button and functionality including server
 
     const started = useSelector(state => state.pomodoro.pomodoroStarted);
     const paused = useSelector(state => state.pomodoro.pomodoroPaused);

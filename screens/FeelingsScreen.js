@@ -4,7 +4,7 @@ import {StyleSheet, View, Button} from 'react-native';
 import FeelingSlider from '../components/FeelingSlider';
 
 import {createFeelings} from "../src/graphql/mutations";
-import {API, graphqlOperation, Auth} from "aws-amplify";
+import {API, graphqlOperation} from "aws-amplify";
 
 export default function FeelingsScreen({navigation}) {
 

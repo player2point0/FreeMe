@@ -3,7 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import FeelingSlider from "../components/FeelingSlider";
 
 import {createPostWork} from "../src/graphql/mutations";
-import {API, Auth, graphqlOperation} from "aws-amplify";
+import {API, graphqlOperation} from "aws-amplify";
 
 export default function FeelingsScreen({navigation}) {
     const onDone = () => {

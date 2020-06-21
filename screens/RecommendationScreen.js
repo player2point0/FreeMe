@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import {TOGGLE_PAUSE_POMODORO} from "../redux/Actions";
 
 import {createBreak} from "../src/graphql/mutations";
-import {API, Auth, graphqlOperation} from "aws-amplify";
+import {API, graphqlOperation} from "aws-amplify";
 
 export default function RecommendationScreen({navigation}){
 

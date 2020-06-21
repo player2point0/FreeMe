@@ -8,7 +8,6 @@ export const createFeelings = /* GraphQL */ `
   ) {
     createFeelings(input: $input, condition: $condition) {
       id
-      userId
       tired
       happy
       bored
@@ -26,7 +25,6 @@ export const updateFeelings = /* GraphQL */ `
   ) {
     updateFeelings(input: $input, condition: $condition) {
       id
-      userId
       tired
       happy
       bored
@@ -44,7 +42,6 @@ export const deleteFeelings = /* GraphQL */ `
   ) {
     deleteFeelings(input: $input, condition: $condition) {
       id
-      userId
       tired
       happy
       bored
@@ -62,7 +59,6 @@ export const createPostWork = /* GraphQL */ `
   ) {
     createPostWork(input: $input, condition: $condition) {
       id
-      userId
       focus
       productive
       distracted
@@ -80,7 +76,6 @@ export const updatePostWork = /* GraphQL */ `
   ) {
     updatePostWork(input: $input, condition: $condition) {
       id
-      userId
       focus
       productive
       distracted
@@ -98,7 +93,6 @@ export const deletePostWork = /* GraphQL */ `
   ) {
     deletePostWork(input: $input, condition: $condition) {
       id
-      userId
       focus
       productive
       distracted
@@ -116,7 +110,6 @@ export const createBreak = /* GraphQL */ `
   ) {
     createBreak(input: $input, condition: $condition) {
       id
-      userId
       duration
       activity
       createdAt
@@ -132,7 +125,6 @@ export const updateBreak = /* GraphQL */ `
   ) {
     updateBreak(input: $input, condition: $condition) {
       id
-      userId
       duration
       activity
       createdAt
@@ -148,7 +140,6 @@ export const deleteBreak = /* GraphQL */ `
   ) {
     deleteBreak(input: $input, condition: $condition) {
       id
-      userId
       duration
       activity
       createdAt

@@ -13,6 +13,7 @@ async function signOut() {
 }
 
 //todo add sign up https://aws-amplify.github.io/amplify-js/api/classes/authclass.html
+//todo add create user in db
 async function signUp(username, password) {
     try {
         const user = await Auth.signUp({
@@ -36,7 +37,6 @@ export default function AuthScreen({navigation}) {
     useEffect(() => {
         Auth.currentAuthenticatedUser()
             .then(currentUser => {
-                console.log(currentUser);
                 setUser(currentUser);
             })
             .catch(error => {

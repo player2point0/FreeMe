@@ -121,3 +121,66 @@ export const onDeleteBreak = /* GraphQL */ `
     }
   }
 `;
+export const onCreateDay = /* GraphQL */ `
+  subscription OnCreateDay($owner: String!) {
+    onCreateDay(owner: $owner) {
+      userId
+      date
+      totalTired
+      totalHappy
+      totalBored
+      totalHungry
+      numberFeelingEntries
+      totalFocus
+      totalProductive
+      totalDistracted
+      totalFlow
+      numberPostWorkEntries
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateDay = /* GraphQL */ `
+  subscription OnUpdateDay($owner: String!) {
+    onUpdateDay(owner: $owner) {
+      userId
+      date
+      totalTired
+      totalHappy
+      totalBored
+      totalHungry
+      numberFeelingEntries
+      totalFocus
+      totalProductive
+      totalDistracted
+      totalFlow
+      numberPostWorkEntries
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteDay = /* GraphQL */ `
+  subscription OnDeleteDay($owner: String!) {
+    onDeleteDay(owner: $owner) {
+      userId
+      date
+      totalTired
+      totalHappy
+      totalBored
+      totalHungry
+      numberFeelingEntries
+      totalFocus
+      totalProductive
+      totalDistracted
+      totalFlow
+      numberPostWorkEntries
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;

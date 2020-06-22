@@ -102,3 +102,62 @@ export const listBreaks = /* GraphQL */ `
     }
   }
 `;
+export const getDay = /* GraphQL */ `
+  query GetDay($userId: ID!, $date: String!) {
+    getDay(userId: $userId, date: $date) {
+      userId
+      date
+      totalTired
+      totalHappy
+      totalBored
+      totalHungry
+      numberFeelingEntries
+      totalFocus
+      totalProductive
+      totalDistracted
+      totalFlow
+      numberPostWorkEntries
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listDays = /* GraphQL */ `
+  query ListDays(
+    $userId: ID
+    $date: ModelStringKeyConditionInput
+    $filter: ModelDayFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listDays(
+      userId: $userId
+      date: $date
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        userId
+        date
+        totalTired
+        totalHappy
+        totalBored
+        totalHungry
+        numberFeelingEntries
+        totalFocus
+        totalProductive
+        totalDistracted
+        totalFlow
+        numberPostWorkEntries
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

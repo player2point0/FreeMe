@@ -1,23 +1,38 @@
-#@auth(rules: [{ allow: owner }])
-
 type Feelings @model @auth(rules: [{ allow: owner }]){
-  id: ID!
-  tired: Int
-  happy: Int
-  bored: Int
-  hungry: Int
+    id: ID!
+    tired: Int
+    happy: Int
+    bored: Int
+    hungry: Int
 }
 
 type PostWork @model @auth(rules: [{ allow: owner }]){
-  id: ID!
-  focus: Int
-  productive: Int
-  distracted: Int
-  flow: Int
+    id: ID!
+    focus: Int
+    productive: Int
+    distracted: Int
+    flow: Int
 }
 
 type Break @model @auth(rules: [{ allow: owner }]){
-  id: ID!
-  duration: Int
-  activity: String
+    id: ID!
+    duration: Int
+    activity: String
+}
+
+type Day @model
+    @key(fields: ["userId", "date"])
+    @auth(rules: [{ allow: owner }]){
+    userId: ID!
+    date: String!
+    totalTired: Int
+    totalHappy: Int
+    totalBored: Int
+    totalHungry: Int
+    numberFeelingEntries: Int
+    totalFocus: Int
+    totalProductive: Int
+    totalDistracted: Int
+    totalFlow: Int
+    numberPostWorkEntries: Int
 }

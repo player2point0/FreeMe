@@ -148,3 +148,75 @@ export const deleteBreak = /* GraphQL */ `
     }
   }
 `;
+export const createDay = /* GraphQL */ `
+  mutation CreateDay(
+    $input: CreateDayInput!
+    $condition: ModelDayConditionInput
+  ) {
+    createDay(input: $input, condition: $condition) {
+      userId
+      date
+      totalTired
+      totalHappy
+      totalBored
+      totalHungry
+      numberFeelingEntries
+      totalFocus
+      totalProductive
+      totalDistracted
+      totalFlow
+      numberPostWorkEntries
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateDay = /* GraphQL */ `
+  mutation UpdateDay(
+    $input: UpdateDayInput!
+    $condition: ModelDayConditionInput
+  ) {
+    updateDay(input: $input, condition: $condition) {
+      userId
+      date
+      totalTired
+      totalHappy
+      totalBored
+      totalHungry
+      numberFeelingEntries
+      totalFocus
+      totalProductive
+      totalDistracted
+      totalFlow
+      numberPostWorkEntries
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteDay = /* GraphQL */ `
+  mutation DeleteDay(
+    $input: DeleteDayInput!
+    $condition: ModelDayConditionInput
+  ) {
+    deleteDay(input: $input, condition: $condition) {
+      userId
+      date
+      totalTired
+      totalHappy
+      totalBored
+      totalHungry
+      numberFeelingEntries
+      totalFocus
+      totalProductive
+      totalDistracted
+      totalFlow
+      numberPostWorkEntries
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;

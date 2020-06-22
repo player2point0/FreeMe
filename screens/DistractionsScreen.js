@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, Button, Text} from 'react-native';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import colors from '../constants/Colors'
 import {height, width} from '../constants/Layout';
 import {DistractionButton} from '../components/DistractionsButtons';

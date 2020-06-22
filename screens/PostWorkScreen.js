@@ -23,8 +23,12 @@ export default function FeelingsScreen({navigation}) {
                 console.log('error adding post work', error);
             });
 
-        //todo pass the slider values to the feelings screen
-        navigation.navigate('FeelingsScreen');
+        navigation.navigate('FeelingsScreen', {
+            focus: focusVal,
+            productive: productiveVal,
+            distracted: distractedVal,
+            flow: flowVal,
+        });
     };
 
     const [focusVal, setFocusVal] = useState(3);
@@ -33,44 +37,44 @@ export default function FeelingsScreen({navigation}) {
     const [flowVal, setFlowVal] = useState(3);
 
     return (
-            <View style={styles.container}>
-                <FeelingSlider
-                    wordsArr={['wat', 'nah', 'kinda', 'yep', 'in the zone']}
-                    sliderName={'Focus...'}
-                    sliderValue={focusVal}
-                    handleSliderChange={(val) => {
-                        setFocusVal(val)
-                    }}
-                />
-                <FeelingSlider
-                    wordsArr={['nah mate', 'nah', 'give or take', 'unreal', 'godly']}
-                    sliderName={'Productive...'}
-                    sliderValue={productiveVal}
-                    handleSliderChange={(val) => {
-                        setProductiveVal(val)
-                    }}
-                />
-                <FeelingSlider
-                    wordsArr={['no chance', 'nah', 'not really', 'oh yeah', 'on the gram rn']}
-                    sliderName={'Distracted...'}
-                    sliderValue={distractedVal}
-                    handleSliderChange={(val) => {
-                        setDistractedVal(val)
-                    }}
-                />
-                <FeelingSlider
-                    wordsArr={['not even remotely', 'nah', 'kinda', 'yes sir', 'like great river']}
-                    sliderName={'Flow...'}
-                    sliderValue={flowVal}
-                    handleSliderChange={(val) => {
-                        setFlowVal(val)
-                    }}
-                />
-                <Button
-                    title={'Done'}
-                    onPress={onDone}
-                />
-            </View>
+        <View style={styles.container}>
+            <FeelingSlider
+                wordsArr={['wat', 'nah', 'kinda', 'yep', 'in the zone']}
+                sliderName={'Focus...'}
+                sliderValue={focusVal}
+                handleSliderChange={(val) => {
+                    setFocusVal(val)
+                }}
+            />
+            <FeelingSlider
+                wordsArr={['nah mate', 'nah', 'give or take', 'unreal', 'godly']}
+                sliderName={'Productive...'}
+                sliderValue={productiveVal}
+                handleSliderChange={(val) => {
+                    setProductiveVal(val)
+                }}
+            />
+            <FeelingSlider
+                wordsArr={['no chance', 'nah', 'not really', 'oh yeah', 'on the gram rn']}
+                sliderName={'Distracted...'}
+                sliderValue={distractedVal}
+                handleSliderChange={(val) => {
+                    setDistractedVal(val)
+                }}
+            />
+            <FeelingSlider
+                wordsArr={['not even remotely', 'nah', 'kinda', 'yes sir', 'like great river']}
+                sliderName={'Flow...'}
+                sliderValue={flowVal}
+                handleSliderChange={(val) => {
+                    setFlowVal(val)
+                }}
+            />
+            <Button
+                title={'Done'}
+                onPress={onDone}
+            />
+        </View>
     );
 }
 

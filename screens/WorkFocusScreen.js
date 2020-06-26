@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {useSelector} from "react-redux";
+import {centeredContainer} from "../constants/Layout";
 
-const LONG_WORK_DURATION = 0.1 * 60;
+const LONG_WORK_DURATION = 2 * 60;
 
 function round2DP(num){
     return Math.round( num * 100 + Number.EPSILON ) / 100;
@@ -35,7 +36,7 @@ export default function WorkFocusScreen({navigation, route}) {
 
     if (longWork) {
         return (
-            <View style={styles.container}>
+            <View style={centeredContainer}>
                 <Text style={styles.text}>worked for</Text>
                 <Text style={styles.text}>{round2DP(workDuration / 60)} minutes</Text>
                 <Text style={styles.text}>on {goal}</Text>
@@ -49,8 +50,7 @@ export default function WorkFocusScreen({navigation, route}) {
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>{round2DP(workDuration)}</Text>
+        <View style={centeredContainer}>
             <Text style={styles.text}>Lock your phone and get to work</Text>
             <Text style={styles.text}>on {goal}</Text>
         </View>
@@ -58,11 +58,7 @@ export default function WorkFocusScreen({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+
     text: {
         fontSize: 50,
         textAlign: 'center',

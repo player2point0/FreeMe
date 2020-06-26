@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Button} from 'react-native';
-
+import {View, Button, StyleSheet} from 'react-native';
+import {centeredContainer} from "../constants/Layout";
 import FeelingSlider from '../components/FeelingSlider';
 
 import {createFeelings, updateDay, createDay} from "../src/graphql/mutations";
@@ -10,6 +10,7 @@ import {getDay} from "../src/graphql/queries";
 export default function FeelingsScreen({navigation, route}) {
 
     //todo refactor this mess
+    //todo update the db model to include goal
     const onDone = () => {
         API.graphql(graphqlOperation(createFeelings, {
             input: {
@@ -118,9 +119,6 @@ export default function FeelingsScreen({navigation, route}) {
                 console.log('error getting day', error);
             });
 
-
-        console.log(route.params);
-
         if(route.params.startWork === true){
             navigation.navigate('WorkFocusScreen');
         }
@@ -141,7 +139,7 @@ export default function FeelingsScreen({navigation, route}) {
     const [hungryVal, setHungryVal] = useState(3);
 
     return (
-        <View style={styles.container}>
+        <View style={centeredContainer}>
             <FeelingSlider
                 wordsArr={['hell no', 'nah', 'kinda', 'yep', 'fucking wrecked']}
                 sliderName={'Tired...'}
@@ -183,7 +181,5 @@ export default function FeelingsScreen({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
+
 });

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import {Auth} from "aws-amplify";
+import {centeredContainer} from "../constants/Layout";
 
 async function signOut() {
     try {
@@ -68,7 +69,7 @@ export default function AuthScreen({navigation}) {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={centeredContainer}>
             <Text style={styles.text}>{!user ? 'no user' : user.getUsername()}</Text>
             <TextInput
                 style={styles.textInput}
@@ -102,11 +103,6 @@ export default function AuthScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     text: {
         fontSize: 40,
         textAlign: 'center',

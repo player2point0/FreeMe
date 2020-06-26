@@ -10,3 +10,9 @@ export default {
   },
   isSmallDevice: width < 375,
 };
+
+export const centeredContainer = {
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+};

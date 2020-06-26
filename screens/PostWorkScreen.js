@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import FeelingSlider from "../components/FeelingSlider";
+import {centeredContainer} from "../constants/Layout";
 
 import {createPostWork} from "../src/graphql/mutations";
 import {API, graphqlOperation} from "aws-amplify";
 
 export default function FeelingsScreen({navigation}) {
     const onDone = () => {
+
+        //todo update the db model to include goal
 
         API.graphql(graphqlOperation(createPostWork, {
             input: {
@@ -23,7 +26,7 @@ export default function FeelingsScreen({navigation}) {
                 console.log('error adding post work', error);
             });
 
-        navigation.navigate('FeelingsScreen', {
+        navigation.push('FeelingsScreen', {
             focus: focusVal,
             productive: productiveVal,
             distracted: distractedVal,
@@ -38,7 +41,7 @@ export default function FeelingsScreen({navigation}) {
     const [flowVal, setFlowVal] = useState(3);
 
     return (
-        <View style={styles.container}>
+        <View style={centeredContainer}>
             <FeelingSlider
                 wordsArr={['wat', 'nah', 'kinda', 'yep', 'in the zone']}
                 sliderName={'Focus...'}
@@ -80,7 +83,5 @@ export default function FeelingsScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
+
 });

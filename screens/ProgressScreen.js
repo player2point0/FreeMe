@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
+import {centeredContainer} from '../constants/Layout';
 
 function calculateFlowRate(){
 
@@ -14,7 +15,7 @@ export default function ProgressScreen({navigation}) {
     //todo add a separate detailed stats screen
 
     return (
-        <View style={styles.container}>
+        <View style={centeredContainer}>
             <Text style={styles.text}>2% increase</Text>
             <Button
                 title={'Done'}
@@ -25,12 +26,6 @@ export default function ProgressScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
     text: {
         fontSize: 50,
         textAlign: 'center',

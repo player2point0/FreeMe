@@ -29,6 +29,7 @@ export default function FeelingSlider({wordsArr, sliderName, sliderValue, handle
 
 const styles = StyleSheet.create({
     container: {
+        width: '100%',
         borderColor: 'black',
         borderWidth: 1,
         paddingTop: 10,

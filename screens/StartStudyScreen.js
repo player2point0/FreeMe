@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import {setGoal as setReduxGoal} from "../redux/Actions";
 import {useDispatch} from "react-redux";
+import {centeredContainer} from "../constants/Layout";
 
 export default function StartStudyScreen({navigation}) {
 
@@ -19,7 +20,7 @@ export default function StartStudyScreen({navigation}) {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={centeredContainer}>
             <Text style={styles.text}>Enter a goal for this session</Text>
             <TextInput
                 style={styles.textInput}
@@ -35,11 +36,7 @@ export default function StartStudyScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+
     text: {
         fontSize: 50,
         textAlign: 'center',

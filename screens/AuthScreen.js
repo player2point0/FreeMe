@@ -93,7 +93,7 @@ export default function AuthScreen({navigation}) {
             />}
             <Button
                 onPress={() =>
-                    navigation.navigate('DistractionsScreen')//todo close pop the auth screen from stack when changed
+                    navigation.navigate('StartStudyScreen')//todo close pop the auth screen from stack when changed
                 }
                 title={'start'}
             />

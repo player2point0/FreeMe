@@ -9,6 +9,7 @@ import {getDay} from "../src/graphql/queries";
 
 export default function FeelingsScreen({navigation, route}) {
 
+    //todo refactor this mess
     const onDone = () => {
         API.graphql(graphqlOperation(createFeelings, {
             input: {
@@ -57,7 +58,7 @@ export default function FeelingsScreen({navigation, route}) {
                     postWorkEntries: 0,
                 };
 
-                if (route.params) {
+                if (route.params.focus && route.params.productive && route.params.distracted && route.params.flow) {
                     dayAddition.focus = route.params.focus;
                     dayAddition.productive = route.params.productive;
                     dayAddition.distracted = route.params.distracted;
@@ -117,12 +118,18 @@ export default function FeelingsScreen({navigation, route}) {
                 console.log('error getting day', error);
             });
 
-        //todo using the feelings and the post work values send a request to the recommendation server
-        //todo display a loading animation
-        //todo navigate to a recommendation or back to the distraction screen depending on the server response
+        if(route.params.startWork === true){
+            navigation.navigate('WorkFocusScreen');
+        }
 
-        //navigation.navigate('DistractionsScreen');
-        navigation.navigate('RecommendationScreen');
+        else{
+            //todo using the feelings and the post work values send a request to the recommendation server
+            //todo display a loading animation
+            //todo navigate to a recommendation or back to the distraction screen depending on the server response
+
+            //navigation.navigate('DistractionsScreen');
+            navigation.navigate('RecommendationScreen');
+        }
     };
 
     const [tiredVal, setTiredVal] = useState(3);

@@ -2,7 +2,7 @@ import {combineReducers} from 'redux'
 import {START_POMODORO, TOGGLE_PAUSE_POMODORO,
     DECREMENT_POMODORO_TIMER, RESET_POMODORO} from './Actions'
 
-import {POMODORO_START_TIME} from "../components/Pomodoro";
+const POMODORO_START_TIME = 25 * 60;
 
 const merge = (prev, next) => Object.assign({}, prev, next);
 

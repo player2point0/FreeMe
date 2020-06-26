@@ -6,12 +6,13 @@ import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {Provider} from 'react-redux';
 import store from './redux/Store';
 
-import DistractionsScreen from './screens/DistractionsScreen.js';
+import StartStudyScreen from './screens/StartStudyScreen.js';
 import ProgressScreen from './screens/ProgressScreen.js';
 import FeelingsScreen from './screens/FeelingsScreen.js';
 import PostWorkScreen from './screens/PostWorkScreen.js';
 import RecommendationScreen from './screens/RecommendationScreen.js';
 import AuthScreen from "./screens/AuthScreen";
+import WorkFocusScreen from './screens/WorkFocusScreen';
 
 import useCachedResources from './hooks/useCachedResources';
 
@@ -47,8 +48,8 @@ function App() {
                                 component={AuthScreen}
                             />
                             <Stack.Screen
-                                name="DistractionsScreen"
-                                component={DistractionsScreen}
+                                name="StartStudyScreen"
+                                component={StartStudyScreen}
                             />
                             <Stack.Screen
                                 name="ProgressScreen"
@@ -65,6 +66,10 @@ function App() {
                             <Stack.Screen
                                 name="RecommendationScreen"
                                 component={RecommendationScreen}
+                            />
+                            <Stack.Screen
+                                name="WorkFocusScreen"
+                                component={WorkFocusScreen}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>

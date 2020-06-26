@@ -28,6 +28,7 @@ export default function FeelingsScreen({navigation}) {
             productive: productiveVal,
             distracted: distractedVal,
             flow: flowVal,
+            startWork: false,
         });
     };
 

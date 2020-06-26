@@ -118,6 +118,9 @@ export default function FeelingsScreen({navigation, route}) {
                 console.log('error getting day', error);
             });
 
+
+        console.log(route.params);
+
         if(route.params.startWork === true){
             navigation.navigate('WorkFocusScreen');
         }

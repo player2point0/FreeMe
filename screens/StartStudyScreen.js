@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import {setGoal as setReduxGoal} from "../redux/Actions";
+import {useDispatch} from "react-redux";
 
 export default function StartStudyScreen({navigation}) {
 
     const [goal, setGoal] = useState('');
 
+    const dispatch = useDispatch();
+
     const onStartPress = () => {
         //todo update the redux goal state
+        dispatch(setReduxGoal(goal));
+
         navigation.navigate('FeelingsScreen', {
             startWork: true
         });

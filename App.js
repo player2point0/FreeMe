@@ -40,7 +40,7 @@ function App() {
                         <Stack.Navigator
                             initialRouteName="AuthScreen"
                             screenOptions={{
-                                headerShown: true,
+                                headerShown: false,
                             }}
                         >
                             <Stack.Screen

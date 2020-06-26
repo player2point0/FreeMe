@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
 function calculateFlowRate(){
 
 }
 
-export default function ProgressScreen() {
+export default function ProgressScreen({navigation}) {
     //todo create a day table in the db that contains the overall figure for a day
     //todo create a user table that contains the users flow rate
     //todo load the past week and calculate a temporary flow rate with it
@@ -16,6 +16,10 @@ export default function ProgressScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>2% increase</Text>
+            <Button
+                title={'Done'}
+                onPress={() => navigation.navigate('StartStudyScreen')}
+            />
         </View>
     );
 }

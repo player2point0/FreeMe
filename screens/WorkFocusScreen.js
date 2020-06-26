@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
+import {useSelector} from "react-redux";
 
 const LONG_WORK_DURATION = 0.1 * 60;
 
@@ -8,14 +9,14 @@ function round2DP(num){
 }
 
 
-
-export default function WorkFocusScreen({navigation}) {
+export default function WorkFocusScreen({navigation, route}) {
 
     //todo check if this persists between lock screens
     const [startTime, setStartTime] = useState(new Date());
     const [longWork, setLongWork] = useState(false);
     const [workDuration, setWorkDuration] = useState(0);
 
+    const goal = useSelector(state => state.goal);
 
     useEffect(() => {
         let pomodoroTimer = setInterval(() => {
@@ -37,6 +38,7 @@ export default function WorkFocusScreen({navigation}) {
             <View style={styles.container}>
                 <Text style={styles.text}>worked for</Text>
                 <Text style={styles.text}>{round2DP(workDuration / 60)} minutes</Text>
+                <Text style={styles.text}>on {goal}</Text>
                 <Button
                     onPress={() => navigation.navigate('PostWorkScreen', {
                         startWork: false
@@ -50,6 +52,7 @@ export default function WorkFocusScreen({navigation}) {
         <View style={styles.container}>
             <Text style={styles.text}>{round2DP(workDuration)}</Text>
             <Text style={styles.text}>Lock your phone and get to work</Text>
+            <Text style={styles.text}>on {goal}</Text>
         </View>
     );
 }

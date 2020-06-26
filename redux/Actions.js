@@ -1,4 +1,8 @@
-export const START_POMODORO = 'START_POMODORO';
-export const TOGGLE_PAUSE_POMODORO = 'TOGGLE_PAUSE_POMODORO';
-export const DECREMENT_POMODORO_TIMER = 'DECREMENT_POMODORO_TIMER';
-export const RESET_POMODORO = 'RESET_POMODORO';
+export const SET_GOAL = 'SET_GOAL';
+export const RESET_GOAL = 'RESET_GOAL';
+export const START_WORK = 'START_WORK';
+export const RESET_WORK = 'RESET_WORK';
+
+export function setGoal(text){
+    return {type: SET_GOAL, text}
+}

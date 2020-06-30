@@ -11,8 +11,8 @@ export default function StartStudyScreen({navigation}) {
     const dispatch = useDispatch();
 
     const onStartPress = () => {
-        //todo update the redux goal state
         dispatch(setReduxGoal(goal));
+        setGoal('');
 
         navigation.navigate('FeelingsScreen', {
             startWork: true

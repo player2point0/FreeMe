@@ -51,6 +51,7 @@ export default function WorkFocusScreen({navigation, route}) {
 
     return (
         <View style={centeredContainer}>
+            <Text style={styles.text}>Just fucking do it</Text>
             <Text style={styles.text}>Lock your phone and get to work</Text>
             <Text style={styles.text}>on {goal}</Text>
         </View>

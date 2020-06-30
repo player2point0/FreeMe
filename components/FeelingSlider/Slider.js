@@ -2,12 +2,16 @@ import React, {useState} from 'react'
 import {Text, View, StyleSheet, PanResponder, Animated} from 'react-native'
 import {width} from "../../constants/Layout";
 
-function convertRange( value, r1, r2 ) {
-    return ( value - r1[ 0 ] ) * ( r2[ 1 ] - r2[ 0 ] ) / ( r1[ 1 ] - r1[ 0 ] ) + r2[ 0 ];
+function convertRange(value, r1, r2) {
+    return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
 }
+
+const circleRadius = 50;
 
 export default function Slider() {
 
+    //todo lift up the state
+    //todo scale the xVal between 1 and 5
     const [xVal, setXVal] = useState(0);
 
     const panResponder = PanResponder.create({
@@ -20,8 +24,9 @@ export default function Slider() {
         onPanResponderGrant: (event, gestureState) => {
             // The gesture has started. Show visual feedback so the user knows
             // what is happening!
-
             // gestureState.d{x,y} will be set to zero now
+
+            //todo add initial visual feedback
         },
         onPanResponderMove: (event, gestureState) => {
             // The most recent move distance is gestureState.move{X,Y}
@@ -48,20 +53,30 @@ export default function Slider() {
     const circleTransformStyle = {
         transform: [
             {
-                translateX: xVal//Animated.add(val, new Animated.Value(-circleRadius))
+                translateX: xVal - circleRadius
             }
         ]
     };
 
+    //todo improve css styling
+    //todo add a lerp between states
+
     return (
-        <View
-            style={[styles.container]}
-            {...panResponder.panHandlers}
-        >
-            <View style={styles.circleContainer}>
-                <Text
-                    style={[styles.circle, circleTransformStyle]}
-                >test</Text>
+        <View>
+            <Text
+                style={styles.nahText}
+            >Nah</Text>
+
+            <Text
+                style={styles.yehText}
+            >yeh</Text>
+
+            <View
+                style={[styles.container]}
+                {...panResponder.panHandlers}
+            ><Text
+                style={[styles.circle, circleTransformStyle]}
+            >test</Text>
             </View>
         </View>
     )
@@ -70,26 +85,30 @@ export default function Slider() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-
-        backgroundColor: "#fff",
         width: width,
-    },
-
-    circle: {
-
-        width: 100,
-        height: 100,
-        backgroundColor: "#c00000",
-        borderRadius: 100,
+        height: 'auto',
         borderColor: 'black',
         borderWidth: 1,
     },
 
-    circleContainer: {
-        flex: 1,
-        justifyContent: 'center',
-       borderColor: 'blue',
-       borderWidth: 1,
-    }
+    circle: {
+        width: 2 * circleRadius,
+        height: 2 * circleRadius,
+        backgroundColor: "#c00000",
+        borderRadius: 100,
+        textAlign: 'center',
+        fontSize: 40,
+    },
+
+    nahText: {
+        fontSize: 20,
+        position: 'absolute',
+        left: 0,
+    },
+
+    yehText: {
+        fontSize: 20,
+        position: 'absolute',
+        right: 0,
+    },
 });

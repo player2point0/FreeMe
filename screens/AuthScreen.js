@@ -3,7 +3,6 @@ import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import {Auth} from "aws-amplify";
 import {centeredContainer} from "../constants/Layout";
 
-import Slider from '../components/FeelingSlider/Slider'
 import FeelingSlider from "../components/FeelingSlider";
 
 async function signOut() {
@@ -75,13 +74,6 @@ export default function AuthScreen({navigation}) {
 
     return (
         <View style={centeredContainer}>
-            <FeelingSlider
-                wordsArr={['yehh', 'yeh', 'meh', 'nah', 'nahh']}
-                sliderName={'test'}
-                sliderValue={testVal}
-                handleSliderChange={(val) => setTestVal(val)}
-            />
-            <Slider/>
             <Text style={styles.text}>{!user ? 'no user' : user.getUsername()}</Text>
             <TextInput
                 style={styles.textInput}

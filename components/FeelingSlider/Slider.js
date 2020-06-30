@@ -8,6 +8,12 @@ function convertRange(value, r1, r2) {
 
 const circleRadius = 50;
 
+// https://reactnative.dev/docs/panresponder
+// https://codeburst.io/developing-multi-slider-switch-in-react-native-a15b83b29828
+// https://www.qed42.com/blog/understanding-panresponder-react-native-dragging-list
+// https://codedaily.io/tutorials/36/React-Native-Animated-API-with-PanResponder
+
+
 export default function Slider() {
 
     //todo lift up the state

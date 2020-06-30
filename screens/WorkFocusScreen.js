@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {useSelector} from "react-redux";
-import {centeredContainer} from "../constants/Layout";
+import {centeredContainer, speechText} from "../constants/Layout";
 
-const LONG_WORK_DURATION = 2 * 60;
+const LONG_WORK_DURATION = 5 * 60;
 
 function round2DP(num){
     return Math.round( num * 100 + Number.EPSILON ) / 100;
@@ -37,9 +37,9 @@ export default function WorkFocusScreen({navigation, route}) {
     if (longWork) {
         return (
             <View style={centeredContainer}>
-                <Text style={styles.text}>worked for</Text>
-                <Text style={styles.text}>{round2DP(workDuration / 60)} minutes</Text>
-                <Text style={styles.text}>on {goal}</Text>
+                <Text style={speechText}>worked for</Text>
+                <Text style={speechText}>{round2DP(workDuration / 60)} minutes</Text>
+                <Text style={speechText}>on {goal}</Text>
                 <Button
                     onPress={() => navigation.navigate('PostWorkScreen', {
                         startWork: false
@@ -51,26 +51,12 @@ export default function WorkFocusScreen({navigation, route}) {
 
     return (
         <View style={centeredContainer}>
-            <Text style={styles.text}>Just fucking do it</Text>
-            <Text style={styles.text}>Lock your phone and get to work</Text>
-            <Text style={styles.text}>on {goal}</Text>
+            <Text style={speechText}>Just fucking do it</Text>
+            <Text style={speechText}>Lock your phone and get to work</Text>
+            <Text style={speechText}>on {goal}</Text>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-
-    text: {
-        fontSize: 50,
-        textAlign: 'center',
-        borderWidth: 2,
-        borderColor: 'black',
-    },
-    textInput: {
-        borderColor: 'black',
-        borderWidth: 1,
-        textAlign: 'center',
-        fontSize: 40,
-        width: '100%'
-    }
 });

@@ -16,3 +16,21 @@ export const centeredContainer = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+
+export const speechText = {
+  fontSize: 50,
+  textAlign: 'center',
+  padding: 5,
+  marginBottom: 5,
+};
+
+export const inputText = {
+  borderColor: 'black',
+  borderTopWidth: 1,
+  borderBottomWidth: 1,
+  textAlign: 'center',
+  fontSize: 40,
+  padding: 2,
+  marginBottom: 10,
+  width: '100%'
+};

@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import {Auth} from "aws-amplify";
-import {centeredContainer} from "../constants/Layout";
-
-import FeelingSlider from "../components/FeelingSlider";
+import {centeredContainer, speechText, inputText} from "../constants/Layout";
 
 async function signOut() {
     try {
@@ -17,6 +15,7 @@ async function signOut() {
 
 //todo add sign up https://aws-amplify.github.io/amplify-js/api/classes/authclass.html
 //todo add create user in db
+//todo add the users first name
 async function signUp(username, password) {
     try {
         const user = await Auth.signUp({
@@ -70,19 +69,17 @@ export default function AuthScreen({navigation}) {
         setPassword(val);
     };
 
-    const [testVal, setTestVal] = useState(3);
-
     return (
         <View style={centeredContainer}>
-            <Text style={styles.text}>{!user ? 'no user' : user.getUsername()}</Text>
+            <Text style={speechText}>{!user ? 'no user' : user.getUsername()}</Text>
             <TextInput
-                style={styles.textInput}
+                style={inputText}
                 onChangeText={onUsernameChange}
                 value={username}
                 placeholder={'email'}
             />
             <TextInput
-                style={styles.textInput}
+                style={inputText}
                 onChangeText={onPasswordChange}
                 value={password}
                 placeholder={'password'}
@@ -107,17 +104,4 @@ export default function AuthScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    text: {
-        fontSize: 40,
-        textAlign: 'center',
-        borderWidth: 2,
-        borderColor: 'black',
-    },
-    textInput: {
-        borderColor: 'black',
-        borderWidth: 1,
-        textAlign: 'center',
-        fontSize: 40,
-        width: '100%'
-    }
 });

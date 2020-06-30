@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import {setGoal as setReduxGoal} from "../redux/Actions";
 import {useDispatch} from "react-redux";
-import {centeredContainer} from "../constants/Layout";
+import {centeredContainer, inputText, speechText} from "../constants/Layout";
 
 export default function StartStudyScreen({navigation}) {
+
+    //todo fix keyboard bug
 
     const [goal, setGoal] = useState('');
 
@@ -21,10 +23,10 @@ export default function StartStudyScreen({navigation}) {
 
     return (
         <View style={centeredContainer}>
-            <Text style={styles.text}>Enter a goal for this session</Text>
+            <Text style={speechText}>what do you want to focus on for this session...</Text>
             <TextInput
-                style={styles.textInput}
-                onChangeText={(val) => setGoal(val)}
+                style={inputText}
+                onChangeText={val => setGoal(val)}
                 value={goal}
                 placeholder={'make physics notes'}
             />
@@ -36,18 +38,4 @@ export default function StartStudyScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-
-    text: {
-        fontSize: 50,
-        textAlign: 'center',
-        borderWidth: 2,
-        borderColor: 'black',
-    },
-    textInput: {
-        borderColor: 'black',
-        borderWidth: 1,
-        textAlign: 'center',
-        fontSize: 40,
-        width: '100%'
-    }
 });

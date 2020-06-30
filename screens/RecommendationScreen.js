@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
-import {centeredContainer} from "../constants/Layout";
+import {centeredContainer, speechText} from "../constants/Layout";
 
 import {createBreak} from "../src/graphql/mutations";
 import {API, graphqlOperation} from "aws-amplify";
@@ -26,9 +26,9 @@ export default function RecommendationScreen({navigation}){
 
     return(
         <View style={centeredContainer}>
-            <Text style={styles.text}>Try...</Text>
-            <Text style={styles.text}>20 minute</Text>
-            <Text style={styles.text}>Walk</Text>
+            <Text style={speechText}>Try...</Text>
+            <Text style={speechText}>20 minute</Text>
+            <Text style={speechText}>Walk</Text>
             <Button
                 title={'Done'}
                 onPress={onDone}
@@ -38,8 +38,4 @@ export default function RecommendationScreen({navigation}){
 }
 
 const styles = StyleSheet.create({
-    text: {
-        fontSize: 50,
-        textAlign: 'center',
-    },
 });
